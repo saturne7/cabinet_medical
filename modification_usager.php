@@ -30,7 +30,7 @@
         ?>
         <form method="get" action="modificationBD_usager.php">
             <p><input type="hidden" name="id" value="<?= $usager['id_usager'];?>"/>  </p>
-            <p>Civilite : <select name="civilite" type="text" value="<?= $usager['civilite'];?>">
+            <p>Civilite : <select name="civilite" type="text">
                     <option value="<?= $usager['civilite'];?>"><?= $usager['civilite'];?></option>  
                     <option value="Monsieur">Mr</option>  
                     <option value="Madame">Mme</option></select></p>

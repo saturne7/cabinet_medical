@@ -28,7 +28,7 @@
         <form method="get" action="modificationBD_medecin.php">
             <p><input type="hidden" name="id" value="<?= $medecin['id_Medecin'];?>"/>  </p>
             <p>Civilite : <select name="civilite" type="text">
-                    <option value="<?= $medecin['nom'];?>"></option>
+                    <option value="<?= $medecin['civilite'];?>"><?= $medecin['civilite'];?></option>
                     <option value="Monsieur">Mr</option>  
                     <option value="Madame">Mme</option></select></p>
             <p>Nom : <input type="text" name="nom" value="<?= $medecin['nom'];?>"/>  </p>
