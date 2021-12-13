@@ -8,6 +8,7 @@
         <li><a class="active" href="afficherUsager.php">Patients</a></li>
         <li><a href="afficherusager.php">Medecins</a></li>
         <li><a href="rdv.php">Consultation</a></li>
+        <li><a href="statistique.php">Statistique</a></li>
         <li><a href="index.html">Deconnexion</a></li>
     </ul>      
     <div style="margin-left:25%;padding:1px 16px;height:1500px;">
