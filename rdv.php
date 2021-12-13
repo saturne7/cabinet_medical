@@ -4,11 +4,24 @@
      $contenuNom = $linkpdo->prepare($reqNom);
    
 ?>
+
+
 <?php
-include("connexion_base.php");
-$reqNomU = 'SELECT nom, prenom FROM usager';
-$contenuNomU = $linkpdo->prepare(reqNomU);
-?>
+        include("connexion_base.php");
+
+		$reqNomMedecin = 'SELECT nom, prenom, id_medecin FROM medecin';
+        $contenuNomMedecin = $linkpdo->prepare($reqNom);
+		
+   
+        ?>
+		
+		<?php
+        include("connexion_base.php");
+
+		$reqNomUsager = 'SELECT nom, prenom, id_usager FROM usager';
+        $contenuNomUsager = $linkpdo->prepare($reqNom);
+		
+        ?>
 <HTML>
 <head>
     <title>Fiche rendez-vous</title>				
@@ -26,26 +39,32 @@ $contenuNomU = $linkpdo->prepare(reqNomU);
   
      <form method="POST" action="ajoutusager.php">
           <p>Date_RDV : <input name="date_rdv" type="date" ></p>
-          <p>Duree : <input name="duree" type="text" ></p>
+          <p>Duree : <input name="duree" type="time" ></p>
           <p>Heure_RDV : <input name="heure_rdv" type="text" ></p>
-          <p>usager <input name="usager" type="text" ></p>
-		  <?php
-                    $contenuNomU->execute(array($_POST['usager']));
-                    $resultatNomU = $contenuNomU->fetchAll();
-                    foreach ($resultatNomU as $resultatNomU) {
-                         echo "<option>".$resultatNomU['nom']." ".$resultatNomU['prenom']."</option>";
-                    }
-                        
-               ?>   
-          <p>Medecin attitré : <select name="Medecin" type="text">
+          <p>Usager: <select name="usager" value="<?php= $usager['id_usager'];?>">
+                    <option value="<?php= $usager['id_usager'];?>"><?= $usager['id_usager'];?></option>
                <?php
-                    $contenuNom->execute(array($_POST['Medecin']));
-                    $resultatNom = $contenuNom->fetchAll();
+                    $contenuNomUsager->execute(array($_POST['usager']));
+                    $resultatNom = $contenuNomUsager->fetchAll();
                     foreach ($resultatNom as $resultatNom) {
-                         echo "<option>".$resultatNom['nom']." ".$resultatNom['prenom']."</option>";
+                        echo '<option value="'.$resultatNom['id_usager'].'">';
+                        echo $resultatNom['nom'].' '.$resultatNom['prenom']. "</option>";
                     }
                         
-               ?>     
+               ?> 
+		    
+          
+              <p>Medecin attitré : <select name="medecin" value="<?= $usager['id_medecin'];?>">
+                    <option value="<?= $usager['id_medecin'];?>"><?= $usager['id_medecin'];?></option>
+               <?php
+                    $contenuNomMedecin->execute(array($_POST['medecin']));
+                    $resultatNom = $contenuNomMedecin->fetchAll();
+                    foreach ($resultatNom as $resultatNom) {
+                        echo '<option value="'.$resultatNom['id_medecin'].'">';
+                        echo $resultatNom['nom'].' '.$resultatNom['prenom']. "</option>";
+                    }
+                        
+               ?>          
                </select></p>
           <p><input type="submit" value="Valider" ><input type="reset" value="Annuler"></p>
      </form>
