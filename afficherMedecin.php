@@ -37,8 +37,8 @@
       echo "<td>" . $resultat['civilite'] . "</td>";
       echo "<td>" . $resultat['nom'] . "</td>";
       echo "<td>" . $resultat['prenom'] . "</td>";
-      echo "<td>" ?><a href= "modification_medecin.php?numMedecin=<?=$resultat['id_Medecin']?>"> Modifier <?php "</td>";
-      echo "<td>" ?><a href="supprimer_medecin.php?numMedecin=<?=$resultat['id_Medecin']?>"> Supprimer<?php "</td>";
+      echo "<td>" ?><a href= "modification_medecin.php?numMedecin=<?=$resultat['id_medecin']?>"> Modifier <?php "</td>";
+      echo "<td>" ?><a href="supprimer_medecin.php?numMedecin=<?=$resultat['id_medecin']?>"> Supprimer<?php "</td>";
       echo "</tr>";
     }
     echo "</table>";?></p>

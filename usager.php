@@ -1,6 +1,6 @@
 <?php
      include("connexion_base.php");
-     $reqNom = 'SELECT nom, prenom FROM medecin';
+     $reqNom = 'SELECT * FROM medecin ORDER BY nom DESC';
      $contenuNom = $linkpdo->prepare($reqNom);
    
 ?>
@@ -35,10 +35,10 @@
           <p>Numero de securite sociale : <input name="num_secu" type="text" ></p>
           <p>Medecin attitré : <select name="Medecin" type="text">
                <?php
-                    $contenuNom->execute(array($_POST['Medecin']));
+                    $contenuNom->execute();
                     $resultatNom = $contenuNom->fetchAll();
                     foreach ($resultatNom as $resultatNom) {
-                         echo "<option>".$resultatNom['nom']." ".$resultatNom['prenom']."</option>";
+                         echo '<option value= "'.$resultatNom['id_medecin'].'" >'.$resultatNom['nom'].' '.$resultatNom['prenom'].'</option>';
                     }
                         
                ?>     

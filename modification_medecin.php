@@ -18,7 +18,7 @@
         include("connexion_base.php");
 
         //préparation de la requête
-        $req = $linkpdo->prepare('SELECT *  FROM medecin WHERE id_Medecin = :num LIMIT 1');
+        $req = $linkpdo->prepare('SELECT *  FROM medecin WHERE id_medecin = :num LIMIT 1');
         //liaison du paramètre nommé.
         $req->bindValue(':num', $_GET['numMedecin'], PDO:: PARAM_INT);
         //execution de la requête
@@ -27,7 +27,7 @@
         $medecin = $req -> fetch();
         ?>
         <form method="get" action="modificationBD_medecin.php">
-            <p><input type="hidden" name="id" value="<?= $medecin['id_Medecin'];?>"/>  </p>
+            <p><input type="hidden" name="id" value="<?= $medecin['id_medecin'];?>"/>  </p>
             <p>Civilite : <select name="civilite" type="text">
                     <option value="<?= $medecin['civilite'];?>"><?= $medecin['civilite'];?></option>
                     <option value="Monsieur">Mr</option>  

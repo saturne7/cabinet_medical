@@ -17,7 +17,7 @@
         <h2>Modifier un medecin</h2>
         <?php
         include("connexion_base.php");
-        $req = $linkpdo->prepare('UPDATE medecin SET civilite = :civilite, nom = :nom , prenom = :prenom WHERE id_Medecin = :num LIMIT 1');
+        $req = $linkpdo->prepare('UPDATE medecin SET civilite = :civilite, nom = :nom , prenom = :prenom WHERE id_medecin = :num LIMIT 1');
 
         $req->bindValue(':civilite', $_GET['civilite'], PDO::PARAM_STR);
         $req->bindValue(':nom', $_GET['nom'], PDO::PARAM_STR);

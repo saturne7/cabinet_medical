@@ -7,22 +7,17 @@
 
 <body>
     <ul>
-        <li><a href="afficherUsager.php">Patients</a></li>
-        <li><a class="active" href="afficherMedecin.php">Medecin</a></li>
+        <li><a class="active" href="afficherUsager.php">Patients</a></li>
+        <li><a  href="afficherMedecin.php">Medecin</a></li>
         <li><a href="rdv.php">Consultation</a></li>
         <li><a href="statistique.php">Statistique</a></li>
         <li><a href="index.html">Deconnexion</a></li>
     </ul>
     <div style="margin-left:25%;padding:1px 16px;">
-        <h2>Modifier un medecin</h2>
+        <h2>Ajouter un patient</h2>
         <?php
 
         include("connexion_base.php");
-
-        $req = $linkpdo->prepare('SELECT id_medecin FROM medecin WHERE nom = :medecin LIMIT 1');
-        $req->bindValue(':medecin', $_POST['Medecin']);
-        $req->execute();
-        $id_medecin = $req->fetch();
 
         $civilite = $_POST["civilite"];
         $nom = $_POST["nom"];
@@ -33,6 +28,7 @@
         $date_naissance = $_POST["date_naissance"];
         $lieu_naissance = $_POST["lieu_naissance"];
         $num_secu = $_POST["num_secu"];
+        $id_medecin = $_POST["Medecin"];
 
         $req = $linkpdo->prepare('INSERT INTO usager(civilite, nom, prenom, adresse, ville, codepostal, date_naissance, lieu_naissance, num_secu, id_medecin) 
     VALUES(:civilite, :nom, :prenom, :adresse, :ville, :codepostal, :date_naissance, :lieu_naissance, :num_secu, :id_medecin)');
@@ -46,7 +42,7 @@
             'date_naissance' => $date_naissance,
             'lieu_naissance' => $lieu_naissance,
             'num_secu' => $num_secu,
-            'id_medecin' => $id_medecin['id_medecin']
+            'id_medecin' => $id_medecin
         ));
 
         if ($req) {
