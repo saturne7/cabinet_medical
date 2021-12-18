@@ -45,8 +45,8 @@
                </select></p>
           <p><input type="submit" value="Valider" ><input type="reset" value="Annuler"></p>
      </form>
-     <form method="POST" action="recherchercontact.php">
-          <input type="submit"  value="Rechecher un contact" ></p>
+     <form method="POST" action="afficherUsager.php">
+          <input type="submit"  value="Retour" ></p>
      </form>
      </div>
 

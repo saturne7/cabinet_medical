@@ -19,6 +19,7 @@
 
 		$reqNom = 'SELECT nom, prenom, id_medecin FROM medecin';
         $contenuNom = $linkpdo->prepare($reqNom);
+
 		
         //préparation de la requête
         $req = $linkpdo->prepare('SELECT *  FROM usager WHERE id_usager = :num LIMIT 1');
