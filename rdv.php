@@ -14,40 +14,26 @@
      <div style="margin-left:25%;padding:1px 16px;">
      <h2>Ajout d'un Rendez-vous :</h2>
   
-     <form method="POST" action="ajoutRDV.php">
+     <form method="POST" action="ajoutconsultation.php">
           <p>Date de la consultation : <input name="date_rdv" type="date" ></p>
           <p>Duree : <input name="duree" type="time" ></p>
           <p>Heure de la consultation : <input name="heure_rdv" type="time" ></p>
-          <p>Patient : <select name="usager" value="">
+          <p>Patient : <select name="id_usager">
                <option value=""></option>
                <?php
                     include("connexion_base.php");
-                    $reqUsager = 'SELECT nom, prenom, id_medecin
+                    $reqUsager = 'SELECT nom, prenom, id_medecin, id_usager
                     FROM usager';
                     $contenuUsager = $linkpdo->prepare($reqUsager);
-                    $contenuUsager->execute(array($_POST['usager']));
+                    $contenuUsager->execute(array($_POST['id_usager']));
                     foreach ($contenuUsager->fetchAll() as $resultatUsager) {
                         echo '<option value="'.$resultatUsager['id_usager'].'">';
                         echo $resultatUsager['nom'].' '.$resultatUsager['prenom']."</option>";
                     }
                         
                ?> 
-		</select></p>    
-          <p>Medecin : <select name="medecin" value="">
-               <option value=""></option> 
-               <?php
-                    $reqMedecin = 
-                    'SELECT nom, prenom, id_medecin
-                    FROM medecin 
-                    WHERE id_medecin = '.$resultatUsager['id_medecin'].'';
-                    $contenuMedecin =$linkpdo->prepare($reqMedecin);
-                    $contenuMedecin->execute(array($_POST['medecin']));
-                    foreach ($contenuMedecin->fetchAll() as $resultatMed) {
-                         echo '<option value="'.$resultatMed['id_medecin'].'">';
-                         echo $resultatMed['nom'].' '.$resultatMed['prenom']. "</option>";
-                    }
-               ?>          
-          </select></p>
+		</select></p>
+          <p><input name="id_medecin" type="hidden" value="<?=$resultatUsager['id_medecin']?>" ></p>
           <p><input type="submit" value="Valider" ><input type="reset" value="Annuler"></p>
      </form>
      <form method="POST" action="afficherConsultation.php">

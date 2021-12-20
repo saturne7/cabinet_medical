@@ -9,7 +9,7 @@
     <ul>
       <li><a href="afficherUsager.php">Patients</a></li>
       <li><a class="active" href="afficherMedecin.php">Medecins</a></li>
-      <li><a href="rdv.php">Consultations</a></li>
+      <li><a href="afficherConsultation.php">Consultations</a></li>
       <li><a href="statistique.php">Statistiques</a></li>
       <li><a href="index.html">Deconnexion</a></li>
     </ul>
