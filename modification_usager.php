@@ -45,7 +45,14 @@
           <p>Lieu de naissance : <input name="lieu_naissance" type="text" value="<?= $usager['lieu_naissance'];?>" ></p>
           <p>Numero de securite sociale : <input name="num_secu" type="text" value="<?= $usager['num_secu'];?>" ></p>
           <p>Medecin attitré : <select name="Medecin" value="<?= $usager['id_medecin'];?>">
-                    <option value="<?= $usager['id_medecin'];?>"><?= $usager['id_medecin'];?></option>
+                <?php
+                
+                    $reqMed = 'SELECT nom, prenom, id_medecin FROM medecin WHERE id_medecin = '.$usager['id_medecin'].'';
+                    $contenu = $linkpdo->prepare($reqMed);
+                    $contenu->execute(array($_POST['Medecin']));
+                    $resultat = $contenu->fetch();
+                ?>
+                    <option value="<?= $resultat['id_medecin'];?>"><?= $resultat['nom'];?> <?= $resultat['prenom'];?></option>
                <?php
                     $contenuNom->execute(array($_POST['Medecin']));
                     $resultatNom = $contenuNom->fetchAll();

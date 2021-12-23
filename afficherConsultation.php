@@ -17,13 +17,16 @@
     <h2>Liste des consultations : </h2>
     <?php
       include("connexion_base.php");
-      ///Préparation de la requête sans les variables (marqueurs : ?)
+
+    
       $reqRDV = 'SELECT *
       FROM rendez_vous';
       $contenuRDV = $linkpdo->prepare($reqRDV);
       $contenuRDV->execute();
       $resultatRDV = $contenuRDV->fetchAll();
+
       
+
       echo "<table border = 1>";
       echo "<tr>
         <th>Date consultation</th>
@@ -36,16 +39,26 @@
         </tr>";
      
     foreach ($resultatRDV as $resultatRDV) {
+      
     ?>
     <p><?php
+
+      $reqMed = $linkpdo->prepare('SELECT nom, prenom FROM medecin WHERE id_medecin = '.$resultatRDV['id_medecin'].'');
+      $reqMed->execute();
+      $resMed = $reqMed->fetch();
+
+      $reqUse = $linkpdo->prepare('SELECT nom, prenom FROM usager WHERE id_usager = '.$resultatRDV['id_usager'].'');
+      $reqUse->execute();
+      $resUse = $reqUse->fetch();
+
       echo "<tr>";
       echo "<td>" . $resultatRDV['date_rdv'] . "</td>";
       echo "<td>" . $resultatRDV['heure_rdv'] . "</td>";
       echo "<td>" . $resultatRDV['duree'] . "</td>";
-      echo "<td>" . $resultatRDV['id_usager'] . "</td>";
-      echo "<td>" . $resultatRDV['id_medecin']. "</td>";
-      echo "<td>" ?><a href= "modification_rdv.php?numRDV=<?=$resultatRDV['id_rendez_vous']?>"> Modifier <?php "</td>";
-      echo "<td>" ?><a href="supprimer_rdv.php?numRDV=<?=$resultatRDV['id_rendez_vous']?>"> Supprimer<?php "</td>";
+      echo "<td>" . $resUse['nom'].' '.$resUse['prenom']. "</td>";
+      echo "<td>" . $resMed['nom'].' '.$resMed['prenom'].  "</td>";
+      echo "<td>" ?><a href= "modification_consultation.php?numRDV=<?=$resultatRDV['id_rendez_vous']?>"> Modifier <?php "</td>";
+      echo "<td>" ?><a href="supprimer_consultation.php?numRDV=<?=$resultatRDV['id_rendez_vous']?>"> Supprimer<?php "</td>";
       echo "</tr>";
     }
     echo "</table>";?></p>

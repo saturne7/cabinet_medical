@@ -41,7 +41,7 @@
             echo "Échec de l'opération d'insertion";
         }
         ?>
-        <form method="POST" action="afficherUsager.php">
+        <form method="POST" action="afficherConsultation.php">
             <input type="submit" value="Retour"></p>
         </form>
     </div>
