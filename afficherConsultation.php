@@ -20,12 +20,11 @@
 
     
       $reqRDV = 'SELECT *
-      FROM rendez_vous';
+      FROM rendez_vous
+      ORDER BY date_rdv, heure_rdv';
       $contenuRDV = $linkpdo->prepare($reqRDV);
       $contenuRDV->execute();
       $resultatRDV = $contenuRDV->fetchAll();
-
-      
 
       echo "<table border = 1>";
       echo "<tr>

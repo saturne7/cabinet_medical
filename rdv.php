@@ -25,15 +25,15 @@
                     $reqUsager = 'SELECT nom, prenom, id_medecin, id_usager
                     FROM usager';
                     $contenuUsager = $linkpdo->prepare($reqUsager);
-                    $contenuUsager->execute(array($_POST['id_usager']));
+                    $contenuUsager->execute(array($_POST["id_usager"]));
                     foreach ($contenuUsager->fetchAll() as $resultatUsager) {
-                        echo '<option value="'.$resultatUsager['id_usager'].'">';
-                        echo $resultatUsager['nom'].' '.$resultatUsager['prenom']."</option>";
+                         echo '<option value="'.$resultatUsager['id_usager'].'">';
+                         echo $resultatUsager['nom'].' '.$resultatUsager['prenom']."</option>";
                     }
                         
                ?> 
 		</select></p>
-          <p><input name="id_medecin" type="hidden" value="<?=$resultatUsager['id_medecin']?>" ></p>
+          <p><input name="id_medecin" type="hidden" value="<?=$resultatUsager['id_medecin']?>"></p>
           <p><input type="submit" value="Valider" ><input type="reset" value="Annuler"></p>
      </form>
      <form method="POST" action="afficherConsultation.php">

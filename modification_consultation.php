@@ -35,14 +35,14 @@
             <p>Heure de la consultation: <input type="time" name="heure" value="<?= $rdv['heure_rdv'];?>" /> </p>
             <p>Patients : <select name="patient" value="<?= $rdv['id_usager'];?>">
                     <?php
-                     $reqUse = 'SELECT nom, prenom FROM usager WHERE id_usager = '.$rdv['id_usager'].'';
+                     $reqUse = 'SELECT nom, prenom, id_medecin FROM usager WHERE id_usager = '.$rdv['id_usager'].'';
                      $contenu = $linkpdo->prepare($reqUse);
                      $contenu->execute(array($_GET['patient']));
                      $resultat = $contenu->fetch();
                     ?>
                     <option value="<?= $rdv['id_usager'];?>"><?= $resultat['nom'];?> <?= $resultat['prenom'];?></option>
                <?php
-                    $reqNom = 'SELECT nom, prenom, id_usager FROM usager';
+                    $reqNom = 'SELECT nom, prenom, id_usager, id_medecin FROM usager';
                     $contenuNom = $linkpdo->prepare($reqNom);
                     $contenuNom->execute(array($_GET['patient']));
                     $resultatNom = $contenuNom->fetchAll();
@@ -53,6 +53,7 @@
                         
                ?>     
                </select></p>
+            <p> <input name="id_medecin" type="hidden" value="<?=$resultatNom['id_medecin']?>" ></p>
             <p> <input type="submit" value="Enregister vos modifications" name="operation"> </p>
         </form>
         <form method="POST" action="afficherConsultation.php">
