@@ -21,7 +21,7 @@
         $date = $_POST["date_rdv"];
         $duree = $_POST["duree"];
         $heure = $_POST["heure_rdv"];
-        $id_usager = $_POST["id_usager"];
+        $id_usager = $_POST["patient"];
         $id_medecin =$_POST["id_medecin"];
     
         $reqVerif = 

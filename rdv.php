@@ -18,15 +18,16 @@
           <p>Date de la consultation : <input name="date_rdv" type="date" ></p>
           <p>Duree : <input name="duree" type="time" ></p>
           <p>Heure de la consultation : <input name="heure_rdv" type="time" ></p>
-          <p>Patient : <select name="id_usager">
+          <p>Patient : <select name="patient">
                <option value=""></option>
                <?php
                     include("connexion_base.php");
                     $reqUsager = 'SELECT nom, prenom, id_medecin, id_usager
                     FROM usager';
                     $contenuUsager = $linkpdo->prepare($reqUsager);
-                    $contenuUsager->execute(array($_POST["id_usager"]));
-                    foreach ($contenuUsager->fetchAll() as $resultatUsager) {
+                    $contenuUsager->execute(array($_POST["patient"]));
+                    $resultatUsager=$contenuUsager->fetchAll();
+                    foreach ($resultatUsager as $resultatUsager) {
                          echo '<option value="'.$resultatUsager['id_usager'].'">';
                          echo $resultatUsager['nom'].' '.$resultatUsager['prenom']."</option>";
                     }

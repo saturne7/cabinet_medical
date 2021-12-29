@@ -92,6 +92,31 @@
         echo "<td>" . $resultFSup50['nb'] . "</td>";
         echo "<tr>";
         echo "</table>";?></p>
+
+      <?php
+      $HeureMed = 
+      'SELECT m.nom, m.prenom, SUM(c.duree) as nbH 
+      FROM rendez_vous c, medecin m
+      WHERE m.id_medecin=c.id_medecin
+      GROUP BY m.nom, m.prenom';
+      $ReqHMed = $linkpdo->prepare($HeureMed);
+      $ReqHMed->execute();
+      $nbHMed = $ReqHMed->fetchAll();
+      
+      echo "<table border = 1>";
+      echo "<tr>
+        <th>Medecin</th>
+        <th>Nb d'heure</th>
+        </tr> ";
+      foreach($nbHMed as $nbHMed){
+      ?>
+      <p><?php
+        echo "<tr>";
+        echo "<td>" .$nbHMed['nom'].' '.$nbHMed['prenom']. "</td>";
+        echo "<td>" .$nbHMed['nbH']. "</td>";
+        echo "</tr>";
+      }
+      echo "</table>";?></p>
 </div>
 
 </body>
