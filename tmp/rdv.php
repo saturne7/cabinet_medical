@@ -2,21 +2,21 @@
 <head>
     <title>Fiche rendez-vous</title>				
 </head>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../style/style.css">
 <body>
      <ul>
           <li><a  href="afficherUsager.php">Patients</a></li>
           <li><a href="afficherMedecin.php">Medecins</a></li>
           <li><a class="active" href="rdv.php">Consultations</a></li>
           <li><a href="statistique.php">Statistiques</a></li>
-          <li><a href="index.html">Deconnexion</a></li>
+          <li><a href="../index.html">Deconnexion</a></li>
      </ul>      
      <div style="margin-left:25%;padding:1px 16px;">
      <h2>Ajout d'un Rendez-vous :</h2>
   
      <form method="POST" action="ajoutconsultation.php">
           <p>Date de la consultation : <input name="date_rdv" type="date" ></p>
-          <p>Duree : <input name="duree" type="time" ></p>
+          <p>Duree : <input name="duree" type="time" value="00:30" ></p>
           <p>Heure de la consultation : <input name="heure_rdv" type="time" ></p>
           <p>Patient : <select name="patient">
                <option value=""></option>

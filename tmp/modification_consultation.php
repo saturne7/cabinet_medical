@@ -2,14 +2,14 @@
 <head>
     <title>Modification Consultation</title>				
 </head>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../style/style.css">
 <body>
     <ul>
         <li><a href="afficherUsager.php">Patients</a></li>
         <li><a href="afficherMedecin.php">Medecins</a></li>
         <li><a class="active" href="afficherConsultation.php">Consultations</a></li>
         <li><a href="statistique.php">Statistiques</a></li>
-        <li><a href="index.html">Deconnexion</a></li>
+        <li><a href="../index.html">Deconnexion</a></li>
     </ul>      
     <div style="margin-left:25%;padding:1px 16px;height:1000px;">
         <h2>Modifier une consultation</h2>
@@ -49,8 +49,7 @@
                     foreach ($resultatNom as $resultatNom) {
                         echo '<option value="'.$resultatNom['id_usager'].'">';
                         echo $resultatNom['nom'].' '.$resultatNom['prenom']. "</option>";
-                    }
-                        
+                    }        
                ?>     
                </select></p>
             <p> <input name="id_medecin" type="hidden" value="<?=$resultatNom['id_medecin']?>" ></p>

@@ -4,14 +4,14 @@
   <head>
     <title>Afficher consultations</title>
   </head>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style/style.css">
   <body>
     <ul>
       <li><a href="afficherUsager.php">Patients</a></li>
       <li><a href="afficherMedecin.php">Medecins</a></li>
       <li><a class="active" href="afficherConsultation.php">Consultations</a></li>
       <li><a href="statistique.php">Statistiques</a></li>
-      <li><a href="index.html">Deconnexion</a></li>
+      <li><a href="../index.html">Deconnexion</a></li>
     </ul>
     <div style="margin-left:25%;padding:1px 16px;"> 
     <h2>Liste des consultations : </h2>
@@ -21,7 +21,7 @@
     
       $reqRDV = 'SELECT *
       FROM rendez_vous
-      ORDER BY date_rdv, heure_rdv';
+      ORDER BY date_rdv, heure_rdv DESC';
       $contenuRDV = $linkpdo->prepare($reqRDV);
       $contenuRDV->execute();
       $resultatRDV = $contenuRDV->fetchAll();
@@ -51,7 +51,7 @@
       $resUse = $reqUse->fetch();
 
       echo "<tr>";
-      echo "<td>" . $resultatRDV['date_rdv'] . "</td>";
+      echo "<td>" . date_format(date_create($resultatRDV['date_rdv']), 'd/m/Y') . "</td>";
       echo "<td>" . $resultatRDV['heure_rdv'] . "</td>";
       echo "<td>" . $resultatRDV['duree'] . "</td>";
       echo "<td>" . $resUse['nom'].' '.$resUse['prenom']. "</td>";

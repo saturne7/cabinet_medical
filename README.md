@@ -6,3 +6,9 @@ On peut y ajouter des patients, des médecins, ou encore des consultations
 
 Pour cela le/la secrétaire devra ce connecter pour pouvoir accéder au logiciel et donc pouvoir 
 manipuler le logiciel à leur guise
+
+
+Pour ce connecter lorsque l'on est sur la page index.html, il faut rentrer les identifiants suivants :
+
+ID : root
+MDP : iutinfo

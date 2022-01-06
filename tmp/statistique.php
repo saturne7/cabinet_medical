@@ -3,14 +3,14 @@
   <head>
     <title>Statistique du cabinet</title>
   </head>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style/style.css">
   <body>
     <ul>
       <li><a href="afficherUsager.php">Patients</a></li>
       <li><a href="afficherMedecin.php">Medecins</a></li>
       <li><a href="afficherConsultation.php">Consultations</a></li>
       <li><a class="active" href="statistique.php">Statistiques</a></li>
-      <li><a href="index.html">Deconnexion</a></li>
+      <li><a href="../index.html">Deconnexion</a></li>
     </ul>
     <div style="margin-left:25%;padding:1px 16px;"> 
     <h2> Statistique du cabinet : </h2>
@@ -95,7 +95,7 @@
 
       <?php
       $HeureMed = 
-      'SELECT m.nom, m.prenom, SUM(c.duree) as nbH 
+      'SELECT m.nom, m.prenom, SEC_TO_TIME(SUM(TIME_TO_SEC(c.duree))) as nbH 
       FROM rendez_vous c, medecin m
       WHERE m.id_medecin=c.id_medecin
       GROUP BY m.nom, m.prenom';
@@ -113,7 +113,7 @@
       <p><?php
         echo "<tr>";
         echo "<td>" .$nbHMed['nom'].' '.$nbHMed['prenom']. "</td>";
-        echo "<td>" .$nbHMed['nbH']. "</td>";
+        echo "<td> " .$nbHMed['nbH']."</td>";
         echo "</tr>";
       }
       echo "</table>";?></p>
